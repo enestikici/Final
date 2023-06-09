@@ -1,7 +1,7 @@
 ---
-title: "Title"
+title: "MISSING MIGRANTS"
 author: 
-  - Last Name, First Name[^1]
+  - TIKICI, Enes[^1]
 bibliography: ../bibliography/biblio.bib
 csl: ../csl/apa.csl
 header-includes:
@@ -25,7 +25,7 @@ urlcolor: blue
 fontsize: 12pt
 biblio-style: apalike
 abstract: |
-    Write your abstract here.
+    This study examines a dataset on missing immigrants obtained from The International Organization for Migration (IOM). The dataset focuses on immigrants who have lost their lives or disappeared during migration in the first quarter of 2023, encompassing various variables. Key variables include the region where incidents occurred, the year and month of occurrence, the gender of the deceased individuals, the region they were attempting to migrate to, among others. The dataset comprises 220 observations and 23 variables, though only a subset of these will be utilized for analysis in this study. The primary research question to be addressed in the literature review section is "Where and in which regions do the highest numbers of deaths occur during migration, and what are the primary causes of these immigrant fatalities?" This question directly aligns with existing literature and the dataset at hand, and will be explored comprehensively in the literature review section
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
@@ -34,7 +34,7 @@ knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FAL
 <!-- ======================================================================= -->
 <!-- ============================== FOOTNOTES ============================== -->
 <!-- ======================================================================= -->
-[^1]: Student ID, [Github Repo](https://github.com/YOUR_USER_NAME_HERE/YOUR_REPO_NAME_HERE)
+[^1]: 20080503, [Github Repo](https://github.com/YOUR_USER_NAME_HERE/YOUR_REPO_NAME_HERE)
 
 # Important Information About Midterm
 
@@ -47,28 +47,52 @@ knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FAL
 \colorbox{WildStrawberry}{Read the README.md file in the project folder for more information.}
 
 # Introduction
-This outline has been created to assist you in writing your project assignment. You should cite all the sources you use, articles, presentations, projects, etc. Quoting and referencing gives readers the opportunity to access the resources you refer. **Even though you use your own words, if you are conveying the ideas of others in your work, you have to document the source of these ideas. Otherwise, you are committing academic plagiarism.** For example, you can refer to @aydinonat:2007 for academic writing rules. You can find lots of online resources on this topic.
+The purpose of my work is to examine the dataset on missing-immigrants. First of all, I accessed this dataset from the website of The International Organization for Migration (IOM). This dataset includes immigrants who lost their lives or disappeared in the first quarter of 2023, taking into account various variables. Some of these variables are: the region where the incident occurred, the year and month it occurred, the gender of those who lost their lives, the region in which they were trying to migrate, etc. This dataset I found includes 220 observations and 23 variables, but some of these observations and variables will not be included in the analysis in this study. The basic question that I will try to answer in the literature review section is “Where and in which region the most deaths occur during migration and how these immigrants lose their lives?” will be. This question is directly related to the articles I found and my dataset, and I will address this question in detail in the literature review section.
 
-The sections in your project assignment should definitely include the sections in this text. Apart from the sections used here, you can use different subsections. When writing your project, use this file as a draft and adapt its content to your purposes.
-
-In this section, mention the purpose and importance of your work in a few paragraphs.
 
 ## Literature Review
 
-In this section, discuss the articles you have read on the subject by giving references. This is a narrative citation @chang:2013. This one is a parenthetical citation [@chang:2013]. **Do not summarize each article individually under a separate title.** In the literature review section, **at least six** articles must be cited [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
+Due to various reasons such as economic inadequacy, violation of human rights, destruction of the rule of law, severe restriction of individual freedoms, chaos in the country, racism, individuals may decide to immigrate from their country of origin, either on their own or with their families, and may be compelled to do so. . The loss of their lives on the migration route of these individuals who decide to immigrate is called "missing immigrants" in the international arena. Since 2014, when the missing migrants were documented, more than 50 thousand people lost their lives during this migration. 29,126 of these 50 thousand people planned to migrate to Europe. Of these 29,126 people, 25,104 died by drowning in the Mediterranean.(@ahmad2021anatomy,). Autopsies are usually not performed for these immigrants who lost their lives because most of them died by drowning. Identification of the deceased migrant is usually done by their close relatives - if there is a specific mark on their body. Otherwise, it is identified and identified by fingerprint(@robins2022affective,). The data currently available indicate that deaths directly related to border control at land borders are higher than at sea. However, for the vast majority, the cause of death is only indirectly related to border control. While most boat migrants die from suffocation, hypothermia and thirst, most stowaways seem to die of suffocation and thirst(@last2014tracking,). This issue of missing immigrants is an issue that the international public does not pay enough attention to. Most deaths occur in the Mediterranean, as immigrants usually plan to migrate to Europe via the Mediterranean. There are certain families that want to attract the attention of the international public on this issue, one of them is a family that mourns and struggles for every common grave in the Mediterranean, and often takes political steps to find the truth about their loved ones and honor their remains (@kovras2016death,).
 
 # Data
-In this section, discuss the source of the data set you use in your study, if you have done any operation on the raw data, these operations and the summary statistics about the data set. In this section, it is mandatory to have a table (Table \ref{tab:summary}) containing summary statistics (mean, standard deviation, minimum, maximum, etc. values) of all variables. Make the necessary references to your tables as shown in the previous sentence [@perkins:1991].
+This dataset is taken from the official site of The International Organization for Migration (IOM) and includes migrants who lost their lives or disappeared in 2023. Certain arrangements were made on this dataset with 220 observations and 23 variables, and 23 variables were reduced to 13 variables and variables that would not be used in this study were discarded. As can be seen in (Table \ref{tab:summary}), in this study, all the variables that can be obtained numerical data were examined and certain numerical data were extracted from them. These numerical data are “mean, median, standard deviation, minimum and maximum” values.
 
 R codes for the analysis should start in this section. In this section, you should include the codes that imports the data set into R and the codes that generate summary statistics.
 
 ```{r}
 library(tidyverse)
+library(ggplot2)
 library(here)
-survey <- read_csv(here("data/survey.csv"))
+MissingMigrants_Global_2023_04_08T23_58_41_0800 <- read_csv(here("data/MissingMigrants-Global-2023-04-08T23_58_41+0800.csv"))
 ```
 
-Note that code options are edited in some of the code chunks in the Rmd file.
+
+```{r, echo=FALSE}
+df <- read.csv("/Users/enest/Desktop/Final1/data/MissingMigrants-Global-2023-04-08T23_58_41+0800.csv")
+
+df <- df[, -c(1, 2, 4, 14, 16, 17, 18, 19, 21, 22)]
+```
+
+
+```{r}
+df1 <- read.csv(here("data/MissingMigrants-Global-2023-04-08T23_58_41+0800.csv"))
+df1 <- df1[, -c(1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23)]
+
+df1[df1$Region=="Mediterranean" | df1$Region=="Caribbean",]
+
+abcd <- invisible(df1[df1$Region=="Mediterranean" | df1$Region=="Caribbean",]);
+
+```
+
+
+```{r, echo=FALSE}
+df <- read.csv("/Users/enest/Desktop/Final1/data/MissingMigrants-Global-2023-04-08T23_58_41+0800.csv")
+
+```
+
+
+
+
 
 ```{r, echo=FALSE}
 library(xtable) 
@@ -76,11 +100,10 @@ library(summarytools)
 st_options(lang = "en")
 ```
 
-With the `echo=FALSE` option, prevent the codes from appearing in the derived pdf file and report your results in tables.
 
 ```{r results='asis', echo=FALSE}
-survey %>%
-  select("sex", "credits", "handedness", "height", "handspan") %>% 
+MissingMigrants_Global_2023_04_08T23_58_41_0800 %>%
+  select("Number Dead", "Number of Survivors", "Minimum Estimated Number of Missing", "Total Number of Dead and Missing", "Number of Females", "Number of Males", "Number of Children") %>% 
   descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>% 
   xtable(caption = "Summary Statistics",
          label = "tab:summary",
@@ -89,30 +112,94 @@ survey %>%
 ```
 
 
+
+
 # Methods and Data Analysis
-In this section describe the methods that you use to achieve the purpose of the study. You should use the appropriate analysis methods (such as hypothesis tests and correlation analysis) that we covered in the class. If you want, you can also use other methods that we haven't covered. If you think some method is more suitable for the purpose of the analysis and the data set, you can use that method [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
 
-For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions using $LaTeX$.
-
-$$
-Y_t = \beta_0 + \beta_N N_t + \beta_P P_t + \beta_I I_t + \varepsilon_t
-$$
-
-This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure \@ref(fig:plot)), box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
+The aim of this study was to determine the region where the highest number of cases and deaths occurred and how these immigrants lost their lives. First of all, using some codes, it was shown with graphics how many lives lost and rescued by region. (\@ref(fig:Second)) shows us the number of people rescued by region, and (\@ref(fig:Thirth)) shows us the number of casualties by region. Then, the question was asked in which ways these immigrants lost their lives the most, and this was plotted with codes. (\@ref(fig:First)) gave us the answer to the question of what are the most common ways these immigrants lose their lives. Finally, a confidence interval for the accuracy of the data was found by performing the t-test. Null Hypothesis (H0) in the T-test: There is no difference between the number of immigrants who died in the Mediterranean and the number of immigrants who died in the Caribbean. Alternative Hypothesis (H1): There is a difference between the number of immigrants who died in the Mediterranean and the number of immigrants who died in the Caribbean. Some of the values obtained as a result of the t-test are as follows; t = 0.81902, df = 79, p-value = 0.4152, alternative hypothesis: The actual difference between the Caribbean and the Mediterranean is not equal to zero. At the 95 percent confidence interval Caribbean: -4.805374 Mediterranean: 11.524855. The mean value of the Caribbean group is 10.545455, and the mean value of the Mediterranean group is 7.185714. As a result of these data, our null hypothesis was falsified and our alternative hypothesis was correct.
 
 
-```{r plot, fig.align='center', fig.cap='An Awesome Plot'}
-survey %>% 
-  ggplot(aes(x = handedness, y = handspan)) +
-  geom_point() +
-  geom_smooth() +
-  scale_x_continuous("Handedness") + 
-  scale_y_continuous("Handspan")
+```{r}
+MissingMigrants_Global_2023_04_08T23_58_41_0800 <- read.csv("/Users/enest/Desktop/Final1/data/MissingMigrants-Global-2023-04-08T23_58_41+0800.csv" , header = TRUE, sep = ",")
+
+library(ggplot2)
+
+ggplot(abcd, aes(x = Region, y = Total.Number.of.Dead.and.Missing )) + geom_boxplot() + theme_classic()
+t.test(Total.Number.of.Dead.and.Missing ~ Region, data = abcd, var.equal = TRUE, paired = FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
+
+
+
+
+```{r First, fig.align='center', fig.cap='In what way did they die?'}
+yz <- data.frame(
+  name=c("Drowning","Harsh Conditions") ,  
+  value=c(sum(df[df$Cause.of.Death=="Drowning" & df$Cause.of.Death=="Drowning",]$Total.Number.of.Dead.and.Missing), sum(df[df$Cause.of.Death=="Harsh environmental conditions / lack of adequate shelter, food, water" & df$Cause.of.Death=="Harsh environmental conditions / lack of adequate shelter, food, water",]$Total.Number.of.Dead.and.Missing))
+  )
+ggplot(yz, aes(x=name, y=value)) + 
+  geom_bar(stat = "identity")
+
+```
+
+
+
+
+```{r Second, fig.align='center', fig.cap='Number of Survivors by Region'}
+xy <- data.frame(
+  name=c("Meditterranean","Caribbean","Europe") ,  
+  value=c(sum(df[df$Region=="Mediterranean",]$Number.of.Survivors, na.rm=TRUE),sum(df[df$Region=="Caribbean",]$Number.of.Survivors, na.rm=TRUE),sum(df[df$Region=="Europe",]$Number.of.Survivors, na.rm=TRUE))
+  )
+  ggplot(xy, aes(x=name, y=value))+ 
+  geom_bar(stat = "identity")
+
+
+```
+
+
+
+```{r Thirth, fig.align='center', fig.cap='Total Number of Dead and Missing by Region'}
+ab <- data.frame(
+  name=c("Mediterranean","Caribbean","Europe") ,  
+  value=c(sum(df[df$Region=="Mediterranean",]$Total.Number.of.Dead.and.Missing),sum(df[df$Region=="Caribbean",]$Total.Number.of.Dead.and.Missing),sum(df[df$Region=="Europe",]$Total.Number.of.Dead.and.Missing))
+  )
+ggplot(ab, aes(x=name, y=value)) + 
+  geom_bar(stat = "identity")
+
+```
+
+
+```{r}
+sum(df[df$Region=="Mediterranean",]$Total.Number.of.Dead.and.Missing)
+
+```
+
+```{r}
+sum(df[df$Region=="Mediterranean",]$Number.of.Survivors, na.rm=TRUE)
+
+```
+
+```{r}
+sum(df[df$Cause.of.Death=="Drowning" & df$Cause.of.Death=="Drowning",]$Total.Number.of.Dead.and.Missing)
+```
+
 # Conclusion
-Summarize the results of your analysis in this section. Discuss to what extent your results responded to the research question you identified at the beginning and how this work could be improved in the future.
+Before starting the study, there were two basic questions asked, the first of which is the case of missing immigrants and in which region is the loss of life most common? Another is, in what ways did these immigrants lose their lives? As a result of the data found and the t-test, we see that the most cases and loss of life are experienced in the Mediterranean region. We conclude that most of the people who lost their lives lost their lives by drowning.
 
 **References section is created automatically by Rmarkdown. There is no need to change the references section in the draft file.**
 
